@@ -60,3 +60,11 @@ b = "hello"
 b[0..1]?.upper() #左边是否存在，存在就调用后边的方法
 
 blackKnight.getLegs().kick?() #方法是否存在，存在就调用
+
+#类
+class Animal
+	#构造方法
+    constructor:(@name)->
+        alert "#{@name} hello"
+
+animal = new Animal "cat" #新建类实例
