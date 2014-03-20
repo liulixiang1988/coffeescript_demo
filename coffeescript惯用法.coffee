@@ -56,6 +56,43 @@ console.log "a: #{a}, b: #{b}"
 {join, resolve} = require('path')
 join('/users', 'Alex')
 
-#4.10 其他类库
+#4.10 其他类库 -参见coffeescript_jq.coffee如何调用配合jquery的
+
+#4.11 私有变量
+type = do ->
+    classToType = {}
+    for name in "Boolean Number String Function Array Date RegExp Undefined Null".split(" ")
+        classToType["[object " + name + "]"] = name.toLowerCase()
+    #return a function
+    (obj) ->
+        strType = Object::toString.call(obj)
+        classToType[strType] or "object"
+
+alert type("hello")
+alert Object::toString.call("hello")
+
+#上面代码会被编译为
+### 
+var type;
+
+type = (function() {
+  var classToType, name, _i, _len, _ref;
+  classToType = {};
+  _ref = "Boolean Number String Function Array Date RegExp Undefined Null".split(" ");
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    name = _ref[_i];
+    classToType["[object " + name + "]"] = name.toLowerCase();
+  }
+  return function(obj) {
+    var strType;
+    strType = Object.prototype.toString.call(obj);
+    return classToType[strType] || "object";
+  };
+})();
+
+alert(type("hello"));
+
+alert(Object.prototype.toString.call("hello"));
+###
 
 
