@@ -36,5 +36,26 @@ Math.min [14, 35, -7, 46, 98]...
 
 #4.7 多个参数
 #使用...解构数组
+Log = 
+    log: ->
+        console?.log(arguments...)
+
+#4.8 and/or
+# and 就是 &&, or 就是 ||, is就是==, isnt就是 !=
+hash = ""
+hash or= {} #如果hash为0， ""， 或者null，则都为false，将他们设置为 空对象
+hash ?= {} #如果hash不存在，则为空对象
+
+#4.9 解构赋值
+someobj = 
+    a: "one"
+    b: "two"
+{a, b} = someobj
+console.log "a: #{a}, b: #{b}"
+#在Node引入模块时很有用
+{join, resolve} = require('path')
+join('/users', 'Alex')
+
+#4.10 其他类库
 
 

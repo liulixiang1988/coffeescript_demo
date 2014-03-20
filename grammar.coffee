@@ -10,7 +10,7 @@ alert object1
 obj2 = one:1, two:2
 
 obj3 = 
-    one: 1,
+    one: 1
     two: 2
 
 #数组
